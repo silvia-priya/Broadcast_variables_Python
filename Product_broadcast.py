@@ -15,7 +15,7 @@ ordersRDD =sc.parallelize(orders)
 prod_broad = sc.broadcast(prod_codes)
 
 def prod_desc(product):
-  return prod_broad.values[product]
+  return prod_broad.value[product]
 
 res= ordersRDD.map(lambda x:(x[0],x[1],x[2],prod_desc(x[2])))
 
